@@ -10,7 +10,10 @@ module Bamboozled
         else
           employees = []
           response['employees'].map{|e| e['id']}.each do |id|
-            employees << find(id, fields)
+            begin
+              employees << find(id, fields)
+            rescue => e
+            end
           end
           employees
         end
